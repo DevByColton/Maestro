@@ -4,7 +4,8 @@ extends Area2D
 @export var toward_boss = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	self.position.x = 1347
+	self.position.y = 267 # Replace with function body. # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
