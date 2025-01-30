@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2so1p3vm6i55"]
+[gd_scene load_steps=9 format=3 uid="uid://d2so1p3vm6i55"]
 
+[ext_resource type="Script" path="res://Notes/whole_note.gd" id="1_4pe2q"]
 [ext_resource type="Texture2D" uid="uid://wv2js2tq1g32" path="res://assets/WholeNote/WholeNote.png" id="1_5k7kc"]
 [ext_resource type="Texture2D" uid="uid://bua6opvsdeq5e" path="res://assets/WholeNote/WholeNoteHold.png" id="2_2kge2"]
 [ext_resource type="Texture2D" uid="uid://bwmeyqus0m7re" path="res://assets/WholeNote/WholeNotePlatform.png" id="2_dnrn0"]
@@ -35,6 +36,7 @@ height = 318.0
 
 [node name="WholeNote" type="Area2D"]
 position = Vector2(37, 0)
+script = ExtResource("1_4pe2q")
 
 [node name="Note" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
