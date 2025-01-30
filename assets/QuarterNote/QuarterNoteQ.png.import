@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbo4l7l75wp22"
-path="res://.godot/imported/Boss.png-c40ef1454fcdb115b45fd0c4069e97e0.ctex"
+uid="uid://dppc5nohot5si"
+path="res://.godot/imported/QuarterNoteQ.png-293fd2afc9652de8d44849c740197c48.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Boss/Boss.png"
-dest_files=["res://.godot/imported/Boss.png-c40ef1454fcdb115b45fd0c4069e97e0.ctex"]
+source_file="res://assets/QuarterNote/QuarterNoteQ.png"
+dest_files=["res://.godot/imported/QuarterNoteQ.png-293fd2afc9652de8d44849c740197c48.ctex"]
 
 [params]
 

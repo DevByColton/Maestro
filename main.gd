@@ -5,29 +5,31 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$NoteTimer.start()
-	var quarter_note = load("res://Notes/quarter_note.tscn")
+	var quarter_note_q = load("res://Notes/quarter_note_q.tscn")
+	var quarter_note_w = load("res://Notes/quarter_note_w.tscn")
 	var half_note = load("res://Notes/half_note.tscn")
 	var dotted_half = load("res://Notes/dotted_half_note.tscn")
 	var whole_note = load("res://Notes/whole_note.tscn")
 	
 	var instances = [
-		quarter_note.instantiate(),
+		quarter_note_w.instantiate(),
+		quarter_note_q.instantiate(),
 		half_note.instantiate(),
 		dotted_half.instantiate(),
 		whole_note.instantiate(),
-		quarter_note.instantiate(),
+		quarter_note_w.instantiate(),
 		half_note.instantiate(),
 		dotted_half.instantiate(),
 		whole_note.instantiate(),
-		quarter_note.instantiate(),
+		quarter_note_w.instantiate(),
 		half_note.instantiate(),
 		dotted_half.instantiate(),
 		whole_note.instantiate(),
-		quarter_note.instantiate(),
+		quarter_note_w.instantiate(),
 		half_note.instantiate(),
 		dotted_half.instantiate(),
 		whole_note.instantiate(),
-		quarter_note.instantiate(),
+		quarter_note_w.instantiate(),
 		half_note.instantiate(),
 		dotted_half.instantiate(),
 		whole_note.instantiate(),
@@ -53,6 +55,4 @@ func _on_note_timer_timeout() -> void:
 	else:
 		current_note = 0
 	
-	
 	notes[current_note].toward_player = true
-	notes[current_note].move_toward_player()

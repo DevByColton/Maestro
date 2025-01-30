@@ -1,9 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://d2so1p3vm6i55"]
 
 [ext_resource type="Script" path="res://Notes/whole_note.gd" id="1_4pe2q"]
-[ext_resource type="Texture2D" uid="uid://wv2js2tq1g32" path="res://assets/WholeNote/WholeNote.png" id="1_5k7kc"]
-[ext_resource type="Texture2D" uid="uid://bua6opvsdeq5e" path="res://assets/WholeNote/WholeNoteHold.png" id="2_2kge2"]
-[ext_resource type="Texture2D" uid="uid://bwmeyqus0m7re" path="res://assets/WholeNote/WholeNotePlatform.png" id="2_dnrn0"]
+[ext_resource type="Texture2D" uid="uid://clqiwefp6yh8r" path="res://assets/WholeNote/WholeNote.png" id="1_5k7kc"]
+[ext_resource type="Texture2D" uid="uid://braj7m1ewcpag" path="res://assets/WholeNote/WholeNoteHold.png" id="2_2kge2"]
+[ext_resource type="Texture2D" uid="uid://vpuwor28fxx4" path="res://assets/WholeNote/WholeNotePlatform.png" id="2_dnrn0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vcqhk"]
+radius = 11.0
+height = 178.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ldd43"]
 animations = [{
@@ -28,37 +32,34 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1oly3"]
-size = Vector2(48, 43)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vcqhk"]
-radius = 6.0
-height = 318.0
+size = Vector2(162, 48.75)
 
 [node name="WholeNote" type="Area2D"]
-position = Vector2(37, 0)
 script = ExtResource("1_4pe2q")
-
-[node name="Note" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_ldd43")
-animation = &"WholeNote"
-
-[node name="Hold" type="AnimatedSprite2D" parent="."]
-position = Vector2(144, 4)
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_wv646")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_1oly3")
 
 [node name="Platform" type="Area2D" parent="."]
 position = Vector2(122, 28)
 
 [node name="Sprite2D" type="Sprite2D" parent="Platform"]
+position = Vector2(-122, -1)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_dnrn0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(-122, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_vcqhk")
+
+[node name="Note" type="AnimatedSprite2D" parent="."]
+position = Vector2(-57, 0)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ldd43")
+animation = &"WholeNote"
+
+[node name="Hold" type="AnimatedSprite2D" parent="."]
+position = Vector2(23, 1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_wv646")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1oly3")
