@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xjsmg"]
 size = Vector2(1280, 40)
 
-[node name="MainPlatform" type="Area2D"]
+[node name="MainPlatform" type="StaticBody2D"]
 position = Vector2(640, 700)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
