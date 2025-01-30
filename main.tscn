@@ -43,3 +43,5 @@ position = Vector2(845, 153)
 
 [node name="GameplaySong" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamOggVorbis_6clhg")
+
+[node name="NoteTimer" type="Timer" parent="."]
