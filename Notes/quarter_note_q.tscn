@@ -17,13 +17,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_deirv"]
 size = Vector2(50, 82)
 
-[node name="QuarterNoteQ" type="Area2D"]
+[node name="QuarterNoteQ" type="RigidBody2D"]
 script = ExtResource("1_ahclc")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="NoteSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_wdtwr")
 animation = &"QuarterNote"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="NoteCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_deirv")

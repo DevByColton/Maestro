@@ -5,10 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://nta3bucxub3b" path="res://assets/HalfNote/HalfNoteHold.png" id="2_0ry7x"]
 [ext_resource type="Texture2D" uid="uid://dk3057m74l226" path="res://assets/HalfNote/HalfNotePlatform.png" id="2_kp0jc"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u37ml"]
-radius = 11.0
-height = 128.0
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_6hskd"]
 animations = [{
 "frames": [{
@@ -34,33 +30,34 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5lqv"]
 size = Vector2(127, 80)
 
-[node name="HalfNote" type="Area2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u37ml"]
+radius = 11.0
+height = 128.0
+
+[node name="HalfNoteRoot" type="RigidBody2D"]
 script = ExtResource("1_me77i")
 
-[node name="Platform" type="Area2D" parent="."]
-position = Vector2(44, 46)
-
-[node name="Sprite2D" type="Sprite2D" parent="Platform"]
-position = Vector2(-44, -1)
+[node name="PlatformSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 45)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_kp0jc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
-position = Vector2(-44, -1)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_u37ml")
-
-[node name="Note" type="AnimatedSprite2D" parent="."]
+[node name="NoteSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-36, 1)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_6hskd")
 animation = &"HalfNote"
 
-[node name="Hold" type="AnimatedSprite2D" parent="."]
+[node name="HoldSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(29, 18)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_q7441")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="NoteCollider" type="CollisionShape2D" parent="."]
 position = Vector2(2.5, 1)
 shape = SubResource("RectangleShape2D_j5lqv")
+
+[node name="PlatformCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 45)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_u37ml")

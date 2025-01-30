@@ -5,10 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://dmykyvuhmsmdn" path="res://assets/DottedHalfNote/DottedHalfNotePlatform.png" id="2_35i8b"]
 [ext_resource type="Texture2D" uid="uid://c642v4rp6ouhd" path="res://assets/DottedHalfNote/DottedHalfNoteHold.png" id="2_xwnta"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_42ada"]
-radius = 11.0
-height = 154.0
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_lqxoe"]
 animations = [{
 "frames": [{
@@ -34,33 +30,34 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xiojy"]
 size = Vector2(137, 79)
 
-[node name="DottedHalfNote" type="Area2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_42ada"]
+radius = 11.0
+height = 154.0
+
+[node name="DottedHalfNoteRoot" type="RigidBody2D"]
 script = ExtResource("1_xl2kj")
 
-[node name="Platform" type="Area2D" parent="."]
-position = Vector2(70, 46)
-
-[node name="Sprite2D" type="Sprite2D" parent="Platform"]
-position = Vector2(-70, -1)
+[node name="PlatformSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 45)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_35i8b")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
-position = Vector2(-70, -1)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_42ada")
-
-[node name="Note" type="AnimatedSprite2D" parent="."]
+[node name="NoteSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-30, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_lqxoe")
 animation = &"DottedHalfNote"
 
-[node name="Hold" type="AnimatedSprite2D" parent="."]
+[node name="HoldSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(27, 23)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_8iq2g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="NoteCollider" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, 0)
 shape = SubResource("RectangleShape2D_xiojy")
+
+[node name="PlatformCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 45)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_42ada")

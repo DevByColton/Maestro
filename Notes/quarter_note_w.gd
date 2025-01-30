@@ -1,4 +1,4 @@
-extends Area2D
+extends RigidBody2D
 
 @export var toward_player = false
 @export var toward_boss = false

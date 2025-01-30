@@ -1,4 +1,4 @@
-extends Area2D
+extends RigidBody2D
 
 @export var toward_player = false
 @export var toward_boss = false
@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 		move_toward_player()
 
 func move_toward_player():
-	self.position.x -= 1
+	self.position.x -= 3
 
 func move_toward_boss():
 	self.position.x += 1
