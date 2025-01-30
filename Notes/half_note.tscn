@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4fb0b84l6q85"]
+[gd_scene load_steps=9 format=3 uid="uid://b4fb0b84l6q85"]
 
 [ext_resource type="Texture2D" uid="uid://b5u2ujew0nydk" path="res://assets/HalfNote/HalfNote.png" id="1_b1c4l"]
+[ext_resource type="Script" path="res://Notes/half_note.gd" id="1_me77i"]
 [ext_resource type="Texture2D" uid="uid://8p7d4of37l1s" path="res://assets/HalfNote/HalfNoteHold.png" id="2_0ry7x"]
 [ext_resource type="Texture2D" uid="uid://7k5ukydehk8a" path="res://assets/HalfNote/HalfNotePlatform.png" id="2_kp0jc"]
 
@@ -35,6 +36,7 @@ height = 164.0
 
 [node name="HalfNote" type="Area2D"]
 position = Vector2(38, 0)
+script = ExtResource("1_me77i")
 
 [node name="Note" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

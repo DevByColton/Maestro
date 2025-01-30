@@ -45,3 +45,5 @@ position = Vector2(845, 153)
 stream = SubResource("AudioStreamOggVorbis_6clhg")
 
 [node name="NoteTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="NoteTimer" to="." method="_on_note_timer_timeout"]

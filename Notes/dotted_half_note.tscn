@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://xxev1jhjr3pj"]
+[gd_scene load_steps=9 format=3 uid="uid://xxev1jhjr3pj"]
 
 [ext_resource type="Texture2D" uid="uid://3bib1cv6115g" path="res://assets/DottedHalfNote/DottedHalfNote.png" id="1_5vjdh"]
+[ext_resource type="Script" path="res://Notes/dotted_half_note.gd" id="1_xl2kj"]
 [ext_resource type="Texture2D" uid="uid://nl0a0wwt7v5o" path="res://assets/DottedHalfNote/DottedHalfNotePlatform.png" id="2_35i8b"]
 [ext_resource type="Texture2D" uid="uid://d263b2m25oxut" path="res://assets/DottedHalfNote/DottedHalfNoteHold.png" id="2_xwnta"]
 
@@ -35,6 +36,7 @@ height = 244.0
 
 [node name="DottedHalfNote" type="Area2D"]
 position = Vector2(52, 0)
+script = ExtResource("1_xl2kj")
 
 [node name="Note" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
