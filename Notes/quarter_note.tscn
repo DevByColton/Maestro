@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxgfqfjy5o1pw"]
+
+[ext_resource type="Texture2D" uid="uid://bany5a0i6t2x5" path="res://assets/QuarterNote/QuarterNote.png" id="1_amnfj"]
+[ext_resource type="Texture2D" uid="uid://c88kapheemylh" path="res://assets/QuarterNote/QuarterNotePlatform.png" id="2_rjpt1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wdtwr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_amnfj")
+}],
+"loop": true,
+"name": &"QuarterNote",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_deirv"]
+size = Vector2(46, 77)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n1786"]
+radius = 6.0
+height = 88.0
+
+[node name="QuarterNote" type="Area2D"]
+position = Vector2(44, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_wdtwr")
+animation = &"QuarterNote"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_deirv")
+
+[node name="Platform" type="Area2D" parent="."]
+position = Vector2(0, 45)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_rjpt1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_n1786")

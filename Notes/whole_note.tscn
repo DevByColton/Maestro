@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2so1p3vm6i55"]
+
+[ext_resource type="Texture2D" uid="uid://wv2js2tq1g32" path="res://assets/WholeNote/WholeNote.png" id="1_5k7kc"]
+[ext_resource type="Texture2D" uid="uid://bua6opvsdeq5e" path="res://assets/WholeNote/WholeNoteHold.png" id="2_2kge2"]
+[ext_resource type="Texture2D" uid="uid://bwmeyqus0m7re" path="res://assets/WholeNote/WholeNotePlatform.png" id="2_dnrn0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ldd43"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5k7kc")
+}],
+"loop": true,
+"name": &"WholeNote",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wv646"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2kge2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1oly3"]
+size = Vector2(48, 43)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vcqhk"]
+radius = 6.0
+height = 318.0
+
+[node name="WholeNote" type="Area2D"]
+position = Vector2(37, 0)
+
+[node name="Note" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ldd43")
+animation = &"WholeNote"
+
+[node name="Hold" type="AnimatedSprite2D" parent="."]
+position = Vector2(144, 4)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_wv646")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1oly3")
+
+[node name="Platform" type="Area2D" parent="."]
+position = Vector2(122, 28)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dnrn0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vcqhk")
