@@ -1,6 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://j0rfm17mq516"]
+[gd_scene load_steps=5 format=3 uid="uid://j0rfm17mq516"]
 
 [ext_resource type="Texture2D" uid="uid://dv6q5a7w0m20i" path="res://assets/Player/Player.png" id="1_1ioin"]
+
+[sub_resource type="GDScript" id="GDScript_ox1vd"]
+script/source = "extends CharacterBody2D
+
+var jump_velocity: float = -550.0
+var descend_gravity: float = 1080.0
+
+func _physics_process(delta: float) -> void:
+
+	if not is_on_floor():
+		velocity.y += get_custom_gravity() * delta  
+	
+	if Input.is_action_just_pressed(\"jump\") and is_on_floor():
+		velocity.y = jump_velocity
+	
+	move_and_slide()
+
+
+func get_custom_gravity() -> float:
+	# When decending apply heavier gravity
+	if velocity.y > 0:
+		return descend_gravity
+	
+	# When ascending return normal gravity
+	return get_gravity().y
+"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i031r"]
 animations = [{
@@ -16,7 +42,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mb0ta"]
 size = Vector2(47, 13.5)
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="CharacterBody2D"]
+script = SubResource("GDScript_ox1vd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

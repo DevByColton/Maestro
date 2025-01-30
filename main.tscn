@@ -23,11 +23,11 @@ script = ExtResource("1_s0xsc")
 
 [node name="MainPlatform" parent="." instance=ExtResource("1_g4f1a")]
 
-[node name="Player" parent="." instance=ExtResource("2_csem3")]
-position = Vector2(40, 626)
-
 [node name="Boss" parent="." instance=ExtResource("4_rk87v")]
 position = Vector2(1215, 363)
+
+[node name="Player" parent="." instance=ExtResource("2_csem3")]
+position = Vector2(48, 626)
 
 [node name="QuarterNote" parent="." instance=ExtResource("5_bqmk5")]
 position = Vector2(249, 513)
@@ -43,3 +43,5 @@ position = Vector2(845, 153)
 
 [node name="GameplaySong" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamOggVorbis_6clhg")
+
+[node name="NoteTimer" type="Timer" parent="."]
