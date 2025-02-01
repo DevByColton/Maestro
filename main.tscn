@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://main.gd" id="1_s0xsc"]
 [ext_resource type="PackedScene" uid="uid://j0rfm17mq516" path="res://Player/player.tscn" id="2_csem3"]
 [ext_resource type="Texture2D" uid="uid://cwvef8tq4toxu" path="res://assets/Background.png" id="2_ow8op"]
-[ext_resource type="PackedScene" uid="uid://bgnn6ttgeuy4h" path="res://Notes/QuarterNoteW.tscn" id="3_oagsc"]
-[ext_resource type="PackedScene" uid="uid://dbbrtctl1i8jw" path="res://Notes/QuarterNoteQ.tscn" id="4_accvy"]
+[ext_resource type="PackedScene" uid="uid://bgnn6ttgeuy4h" path="res://Notes/QuarterNoteQ.tscn" id="3_oagsc"]
+[ext_resource type="PackedScene" uid="uid://dbbrtctl1i8jw" path="res://Notes/QuarterNoteW.tscn" id="4_accvy"]
 [ext_resource type="PackedScene" uid="uid://tkq6is308f6d" path="res://Boss/boss.tscn" id="4_rk87v"]
 [ext_resource type="PackedScene" uid="uid://cwn1ae1lv38rf" path="res://Notes/HalfNote.tscn" id="5_vxutv"]
 [ext_resource type="PackedScene" uid="uid://bbdit05qjr6x2" path="res://Notes/DottedHalfNote.tscn" id="6_6murc"]
@@ -14,8 +14,8 @@
 
 [node name="Main" type="Node"]
 script = ExtResource("1_s0xsc")
-quarter_note_w_scene = ExtResource("3_oagsc")
-quarter_note_q_scene = ExtResource("4_accvy")
+quarter_note_w_scene = ExtResource("4_accvy")
+quarter_note_q_scene = ExtResource("3_oagsc")
 half_note_scene = ExtResource("5_vxutv")
 dotted_half_note_scene = ExtResource("6_6murc")
 whole_note_scene = ExtResource("7_xax3c")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbdit05qjr6x2"]
+[gd_scene load_steps=7 format=3 uid="uid://bbdit05qjr6x2"]
 
 [ext_resource type="Texture2D" uid="uid://dmykyvuhmsmdn" path="res://assets/DottedHalfNote/DottedHalfNotePlatform.png" id="1_4dp62"]
+[ext_resource type="Script" path="res://Notes/dotted_half_note.gd" id="1_qya0y"]
 [ext_resource type="Texture2D" uid="uid://c642v4rp6ouhd" path="res://assets/DottedHalfNote/DottedHalfNoteHold.png" id="2_rta17"]
 [ext_resource type="Texture2D" uid="uid://ciypirkb1cxfd" path="res://assets/DottedHalfNote/DottedHalfNote.png" id="3_qtugn"]
 
@@ -11,6 +12,7 @@ size = Vector2(148, 14)
 size = Vector2(148, 81)
 
 [node name="DottedHalfNote" type="Node2D"]
+script = ExtResource("1_qya0y")
 
 [node name="PlatformBody" type="CharacterBody2D" parent="."]
 
@@ -39,6 +41,8 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_qtugn")
 
 [node name="NoteCollider" type="CollisionShape2D" parent="NoteArea"]
-visible = false
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_4y5jc")
+
+[connection signal="body_entered" from="NoteArea" to="." method="_on_note_area_body_entered"]
+[connection signal="body_exited" from="NoteArea" to="." method="_on_note_area_body_exited"]

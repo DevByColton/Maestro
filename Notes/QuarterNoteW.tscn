@@ -1,30 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgnn6ttgeuy4h"]
+[gd_scene load_steps=6 format=3 uid="uid://dbbrtctl1i8jw"]
 
-[ext_resource type="Texture2D" uid="uid://b1ttmxd7wwasv" path="res://assets/QuarterNote/QuarterNoteW.png" id="1_kcvnu"]
+[ext_resource type="Texture2D" uid="uid://datdjhxyphah3" path="res://assets/QuarterNote/QuarterNotePlatform.png" id="1_s0cam"]
+[ext_resource type="Script" path="res://Notes/quarter_note_w.gd" id="1_ubago"]
+[ext_resource type="Texture2D" uid="uid://b1ttmxd7wwasv" path="res://assets/QuarterNote/QuarterNoteW.png" id="2_wwgaa"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_klpnk"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iir3v"]
+size = Vector2(14, 88)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_erlc4"]
-size = Vector2(50, 81)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2r8gv"]
+size = Vector2(86, 80)
 
 [node name="QuarterNoteW" type="Node2D"]
+script = ExtResource("1_ubago")
 
-[node name="PlatformArea" type="Area2D" parent="."]
-visible = false
+[node name="PlatformBody" type="CharacterBody2D" parent="."]
 
-[node name="PlatformSprite" type="Sprite2D" parent="PlatformArea"]
-visible = false
+[node name="PlatformSprite" type="Sprite2D" parent="PlatformBody"]
+position = Vector2(0, 44)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_s0cam")
 
-[node name="PlatformCollider" type="CollisionShape2D" parent="PlatformArea"]
-visible = false
-shape = SubResource("RectangleShape2D_klpnk")
+[node name="PlatformCollider" type="CollisionShape2D" parent="PlatformBody"]
+position = Vector2(-4.37114e-08, 48)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_iir3v")
+debug_color = Color(0.898039, 0, 0.760784, 0.419608)
 
 [node name="NoteArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="NoteSprite" type="Sprite2D" parent="NoteArea"]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_kcvnu")
+texture = ExtResource("2_wwgaa")
 
 [node name="NoteCollider" type="CollisionShape2D" parent="NoteArea"]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_erlc4")
+shape = SubResource("RectangleShape2D_2r8gv")
+
+[connection signal="body_entered" from="NoteArea" to="." method="_on_note_area_body_entered"]
+[connection signal="body_exited" from="NoteArea" to="." method="_on_note_area_body_exited"]
