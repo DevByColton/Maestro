@@ -60,8 +60,10 @@ animations = [{
 size = Vector2(50, 108)
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 1000
 collision_layer = 7
 collision_mask = 7
+slide_on_ceiling = false
 script = SubResource("GDScript_ox1vd")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

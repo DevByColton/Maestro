@@ -1,32 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://tkq6is308f6d"]
+[gd_scene load_steps=4 format=3 uid="uid://tkq6is308f6d"]
 
-[ext_resource type="Texture2D" uid="uid://bkv55qowtsk4w" path="res://assets/TheMaestro.png" id="1_wbaud"]
 [ext_resource type="Script" path="res://Boss/boss.gd" id="1_wpirx"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_py662"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_wbaud")
-}],
-"loop": true,
-"name": &"boss",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://bkv55qowtsk4w" path="res://assets/Maestro/TheMaestro.png" id="2_hy0hg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2g57y"]
 size = Vector2(178, 639)
 
-[node name="Boss" type="Area2D"]
+[node name="Boss" type="CharacterBody2D"]
+z_index = 2000
 collision_layer = 6
 collision_mask = 6
 script = ExtResource("1_wpirx")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="BossSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_py662")
-animation = &"boss"
+texture = ExtResource("2_hy0hg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="HitBoxCollider" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -2.5)
 shape = SubResource("RectangleShape2D_2g57y")

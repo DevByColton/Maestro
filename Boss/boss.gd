@@ -1,17 +1,13 @@
-extends Area2D
+extends CharacterBody2D
 
 var time: float = 0.0
 var frequency: float = 0.5
 var amplitude: float = 0.3
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var speed: float = 20.0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	# Iterate time, once it completes a full rotation reset it
 	var newTime = time + delta;
 	if newTime > TAU:
@@ -20,3 +16,4 @@ func _process(delta: float) -> void:
 		time = newTime
 	
 	position.y += amplitude * sin(time / frequency)
+	position.x -= speed * delta
