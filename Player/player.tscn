@@ -7,16 +7,28 @@ script/source = "extends CharacterBody2D
 
 var jump_velocity: float = -550.0
 var descend_gravity: float = 1700.0
+var speed = 1000
+@onready var screen_size = get_viewport_rect().size
 
 func _physics_process(delta: float) -> void:
+	
+	# Horizontal movement
+	if Input.is_action_pressed(\"move_right\"):
+		velocity.x += speed * delta
+	if Input.is_action_pressed(\"move_left\"):
+		velocity.x -= speed * delta
 
+	# Vertical movement
 	if not is_on_floor():
 		velocity.y += get_custom_gravity() * delta
 	
+	# Check jump
 	if Input.is_action_just_pressed(\"jump\") and is_on_floor():
 		velocity.y = jump_velocity
 	
+	# Move the player and make sure it cannot go out of bounds
 	move_and_slide()
+	position = position.clamp(Vector2.ZERO, screen_size)
 
 
 func get_custom_gravity() -> float:
@@ -40,19 +52,18 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mb0ta"]
-size = Vector2(47, 13.5)
+size = Vector2(50, 108)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
 script = SubResource("GDScript_ox1vd")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_i031r")
 animation = &"Player"
 
-[node name="HitBoxCollider" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-24, 53, 23, 53, 13, 16, 23, 0, 22, -51, 18, -54, 14, -51, 13, -17, -5, -16, -21, 0, -21, 15, -15, 21)
-
-[node name="PlatformCollider" type="CollisionShape2D" parent="."]
-position = Vector2(0, 46.75)
+[node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mb0ta")
+debug_color = Color(3.41728e-06, 0.630656, 0.451101, 0.419608)

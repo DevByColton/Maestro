@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgnn6ttgeuy4h"]
+
+[ext_resource type="Texture2D" uid="uid://b1ttmxd7wwasv" path="res://assets/QuarterNote/QuarterNoteW.png" id="1_kcvnu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_klpnk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_erlc4"]
+size = Vector2(50, 81)
+
+[node name="QuarterNoteW" type="Node2D"]
+
+[node name="PlatformArea" type="Area2D" parent="."]
+visible = false
+
+[node name="PlatformSprite" type="Sprite2D" parent="PlatformArea"]
+visible = false
+
+[node name="PlatformCollider" type="CollisionShape2D" parent="PlatformArea"]
+visible = false
+shape = SubResource("RectangleShape2D_klpnk")
+
+[node name="NoteArea" type="Area2D" parent="."]
+
+[node name="NoteSprite" type="Sprite2D" parent="NoteArea"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_kcvnu")
+
+[node name="NoteCollider" type="CollisionShape2D" parent="NoteArea"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_erlc4")
