@@ -4,22 +4,28 @@ extends Node2D
 
 signal quarter_note_w_hit(projectile: PackedScene)
 
+var note_speed: float = 50.0
 var player_is_in_area: bool = false
+var is_in_projectile_mode: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	self.position = Vector2(1380, 515)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("w_hit_note") and player_is_in_area:
+	# Move the note along
+	self.position.x -= note_speed * delta
+	
+	if Input.is_action_just_pressed("w_hit_note") and player_is_in_area and !is_in_projectile_mode:
 		# Spawn a projectile at the current location, hide note to give the illusion it is launching
 		var projectile = quarter_note_w_projectile_scene.instantiate()
 		projectile.position = self.position
 		quarter_note_w_hit.emit(projectile)
 		$NoteArea.hide()
 		$QueueFreeTimer.start()
+		is_in_projectile_mode = true
 
 
 func _on_note_area_body_entered(body: Node2D) -> void:
