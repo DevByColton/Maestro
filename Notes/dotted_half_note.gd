@@ -4,7 +4,7 @@ extends Node2D
 
 signal dotted_half_note_hit(projectile: PackedScene)
 
-var note_speed: float = 100.0
+var note_speed: float = 115.0
 var player_is_in_area: bool = false
 var is_in_projectile_mode: bool = false
 
@@ -26,6 +26,10 @@ func _process(delta: float) -> void:
 		$NoteArea.hide()
 		$QueueFreeTimer.start()
 		is_in_projectile_mode = true
+	
+	# Make sure the note is not beyond the left screen bounds with buffer, if it is free it
+	if position.x < -100:
+		queue_free()
 
 
 func _on_note_area_body_entered(body: Node2D) -> void:

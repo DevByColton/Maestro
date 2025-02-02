@@ -18,16 +18,75 @@ func _ready() -> void:
 	note_spawns.append(NoteSpawn.new(5, NoteSpawn.NoteType.DottedHalfNote, 5))
 	note_spawns.append(NoteSpawn.new(6, NoteSpawn.NoteType.WholeNote, 5.8))
 	note_spawns.append(NoteSpawn.new(7, NoteSpawn.NoteType.QuarterNoteQ, 3.9))
-	note_spawns.append(NoteSpawn.new(8, NoteSpawn.NoteType.QuarterNoteQ, 4.1))
+	note_spawns.append(NoteSpawn.new(8, NoteSpawn.NoteType.QuarterNoteW, 4.1))
+	note_spawns.append(NoteSpawn.new(9, NoteSpawn.NoteType.QuarterNoteQ, 5.5))
+	note_spawns.append(NoteSpawn.new(10, NoteSpawn.NoteType.QuarterNoteW, 6.0))
+	note_spawns.append(NoteSpawn.new(11, NoteSpawn.NoteType.QuarterNoteQ, 6.9))
+	note_spawns.append(NoteSpawn.new(12, NoteSpawn.NoteType.HalfNote, 7.2))
+	note_spawns.append(NoteSpawn.new(13, NoteSpawn.NoteType.DottedHalfNote, 8.0))
+	note_spawns.append(NoteSpawn.new(14, NoteSpawn.NoteType.WholeNote, 9.0))
+	note_spawns.append(NoteSpawn.new(15, NoteSpawn.NoteType.QuarterNoteQ, 10.2))
+	note_spawns.append(NoteSpawn.new(16, NoteSpawn.NoteType.QuarterNoteW, 10.8))
+	note_spawns.append(NoteSpawn.new(17, NoteSpawn.NoteType.QuarterNoteQ, 11.4))
+	note_spawns.append(NoteSpawn.new(18, NoteSpawn.NoteType.QuarterNoteW, 11.9))
+	note_spawns.append(NoteSpawn.new(19, NoteSpawn.NoteType.QuarterNoteQ, 12.5))
+	note_spawns.append(NoteSpawn.new(20, NoteSpawn.NoteType.HalfNote, 13.7))
+	note_spawns.append(NoteSpawn.new(21, NoteSpawn.NoteType.DottedHalfNote, 14.9))
+	note_spawns.append(NoteSpawn.new(22, NoteSpawn.NoteType.WholeNote, 15))
+	note_spawns.append(NoteSpawn.new(23, NoteSpawn.NoteType.QuarterNoteQ, 15.67))
+	note_spawns.append(NoteSpawn.new(24, NoteSpawn.NoteType.QuarterNoteW, 16.9))
+	note_spawns.append(NoteSpawn.new(25, NoteSpawn.NoteType.QuarterNoteQ, 18.0))
+	note_spawns.append(NoteSpawn.new(26, NoteSpawn.NoteType.QuarterNoteW, 18.9))
+	note_spawns.append(NoteSpawn.new(27, NoteSpawn.NoteType.QuarterNoteQ, 19.9))
+	note_spawns.append(NoteSpawn.new(28, NoteSpawn.NoteType.HalfNote, 20.9))
+	note_spawns.append(NoteSpawn.new(29, NoteSpawn.NoteType.DottedHalfNote, 22.0))
+	note_spawns.append(NoteSpawn.new(30, NoteSpawn.NoteType.WholeNote, 23.6))
+	note_spawns.append(NoteSpawn.new(31, NoteSpawn.NoteType.QuarterNoteQ, 24.9))
+	note_spawns.append(NoteSpawn.new(32, NoteSpawn.NoteType.QuarterNoteW, 25.8))
+	note_spawns.append(NoteSpawn.new(33, NoteSpawn.NoteType.QuarterNoteQ, 26.9))
+	note_spawns.append(NoteSpawn.new(34, NoteSpawn.NoteType.QuarterNoteW, 27.4))
+	note_spawns.append(NoteSpawn.new(35, NoteSpawn.NoteType.QuarterNoteQ, 28.1))
+	note_spawns.append(NoteSpawn.new(36, NoteSpawn.NoteType.HalfNote, 29.8))
+	note_spawns.append(NoteSpawn.new(37, NoteSpawn.NoteType.DottedHalfNote, 30.8))
+	note_spawns.append(NoteSpawn.new(38, NoteSpawn.NoteType.WholeNote, 32.1))
+	note_spawns.append(NoteSpawn.new(39, NoteSpawn.NoteType.QuarterNoteQ, 33.8))
+	note_spawns.append(NoteSpawn.new(40, NoteSpawn.NoteType.QuarterNoteW, 34.8))
+	note_spawns.append(NoteSpawn.new(41, NoteSpawn.NoteType.QuarterNoteQ, 35.9))
+	note_spawns.append(NoteSpawn.new(42, NoteSpawn.NoteType.QuarterNoteW, 37.2))
+	note_spawns.append(NoteSpawn.new(43, NoteSpawn.NoteType.QuarterNoteQ, 38.9))
+	note_spawns.append(NoteSpawn.new(44, NoteSpawn.NoteType.HalfNote, 40.0))
+	note_spawns.append(NoteSpawn.new(45, NoteSpawn.NoteType.DottedHalfNote, 41.2))
+	note_spawns.append(NoteSpawn.new(46, NoteSpawn.NoteType.WholeNote, 42.8))
+	note_spawns.append(NoteSpawn.new(47, NoteSpawn.NoteType.QuarterNoteQ, 43.6))
+	note_spawns.append(NoteSpawn.new(48, NoteSpawn.NoteType.QuarterNoteW, 44.8))
+	note_spawns.append(NoteSpawn.new(49, NoteSpawn.NoteType.QuarterNoteQ, 45.8))
+	note_spawns.append(NoteSpawn.new(50, NoteSpawn.NoteType.QuarterNoteW, 46.8))
+	note_spawns.append(NoteSpawn.new(51, NoteSpawn.NoteType.QuarterNoteQ, 47.1))
+	note_spawns.append(NoteSpawn.new(52, NoteSpawn.NoteType.HalfNote, 48.8))
+	note_spawns.append(NoteSpawn.new(53, NoteSpawn.NoteType.DottedHalfNote, 50))
+	note_spawns.append(NoteSpawn.new(54, NoteSpawn.NoteType.WholeNote, 51.2))
+	note_spawns.append(NoteSpawn.new(55, NoteSpawn.NoteType.QuarterNoteQ, 52.3))
+	note_spawns.append(NoteSpawn.new(56, NoteSpawn.NoteType.QuarterNoteW, 54.0))
+	note_spawns.append(NoteSpawn.new(57, NoteSpawn.NoteType.QuarterNoteQ, 55))
+	note_spawns.append(NoteSpawn.new(58, NoteSpawn.NoteType.QuarterNoteW, 56.82))
+	note_spawns.append(NoteSpawn.new(59, NoteSpawn.NoteType.QuarterNoteQ, 57.9))
+	note_spawns.append(NoteSpawn.new(60, NoteSpawn.NoteType.HalfNote, 58.8))
+	note_spawns.append(NoteSpawn.new(61, NoteSpawn.NoteType.DottedHalfNote, 59.6))
+	note_spawns.append(NoteSpawn.new(62, NoteSpawn.NoteType.WholeNote, 60.2))
+	note_spawns.append(NoteSpawn.new(63, NoteSpawn.NoteType.QuarterNoteQ, 61.5))
+	note_spawns.append(NoteSpawn.new(64, NoteSpawn.NoteType.QuarterNoteW, 62.0))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("play_song"):
-		if $GameplaySong.playing:
-			$GameplaySong.stop()
-		else:
-			$GameplaySong.play()
+	pass
+
+
+func stop_or_play_song() -> void:
+	if $GameplaySong.playing:
+		$GameplaySong.stop()
+	else:
+		$GameplaySong.play()
 
 
 func start_spawn_note_timers() -> void:
@@ -130,10 +189,11 @@ func _on_boss_on_boss_hit(damage_amount: int) -> void:
 	if next_health > 0:
 		$UI/TextureProgressBar.value = next_health
 	else:
-		# Pop up some win prompt
-		$UI/TextureProgressBar.value = 0
-		$Boss.hide()
-		print("Boss be dead")
+		$Boss.queue_free()
+		$Player.queue_free()
+		$UI.queue_free()
+		$YouWinLabel.show()
+		stop_or_play_song()
 
 
 func _on_hide_gameplay_message_label_timeout() -> void:
@@ -146,3 +206,15 @@ func _on_hide_controls_label_timeout() -> void:
 	$ControlsLabel.hide()
 	$GameplaySong.play()
 	start_spawn_note_timers()
+	$Boss.can_boss_move_horizontal = true
+	$Player.can_player_move = true
+
+
+func _on_boss_on_boss_hit_player() -> void:
+	# Game over
+	$Boss.queue_free()
+	$Player.queue_free()
+	$UI.queue_free()
+	$YouLoseLabel.show()
+	stop_or_play_song()
+	

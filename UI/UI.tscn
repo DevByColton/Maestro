@@ -34,7 +34,8 @@ offset_top = 3.0
 offset_right = 1450.0
 offset_bottom = 67.0
 scale = Vector2(0.4, 0.4)
-value = 100.0
+max_value = 50.0
+value = 50.0
 texture_progress = ExtResource("1_wv2lc")
 
 [node name="HealthBarBackground" type="Sprite2D" parent="."]

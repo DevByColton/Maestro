@@ -5,23 +5,25 @@
 [sub_resource type="GDScript" id="GDScript_ox1vd"]
 script/source = "extends CharacterBody2D
 
-var jump_velocity: float = -550.0
-var descend_gravity: float = 1700.0
-var speed: float = 1000.0
-
 var sprite_half_width: float = 26.5 # Can probably get width and height from sprite node item
 var sprite_half_height: float = 25
+
+@export var can_player_move: bool = false
 
 @onready var screen_size := get_viewport_rect().size
 @onready var screen_min_bounds := Vector2(sprite_half_width, sprite_half_height)
 @onready var screen_max_bounds := Vector2(screen_size.x - sprite_half_width, screen_size.y - sprite_half_height)
 
+var jump_velocity: float = -550.0
+var descend_gravity: float = 1700.0
+var speed: float = 1000.0
+
 func _physics_process(delta: float) -> void:
 	
 	# Horizontal movement
-	if Input.is_action_pressed(\"move_right\"):
+	if Input.is_action_pressed(\"move_right\") and can_player_move:
 		velocity.x += speed * delta
-	if Input.is_action_pressed(\"move_left\"):
+	if Input.is_action_pressed(\"move_left\") and can_player_move:
 		velocity.x -= speed * delta
 
 	# Vertical movement
@@ -29,7 +31,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y += get_custom_gravity() * delta
 	
 	# Check jump
-	if Input.is_action_just_pressed(\"jump\") and is_on_floor():
+	if Input.is_action_just_pressed(\"jump\") and is_on_floor() and can_player_move:
 		velocity.y = jump_velocity
 	
 	# Move the player and make sure it cannot go out of bounds

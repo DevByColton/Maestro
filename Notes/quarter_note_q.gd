@@ -23,6 +23,10 @@ func _process(delta: float) -> void:
 		projectile.position = self.position
 		quarter_note_q_hit.emit(projectile)
 		queue_free()
+	
+	# Make sure the note is not beyond the left screen bound, if it is free it
+	if position.x < -100:
+		queue_free()
 
 
 func _on_note_area_body_entered(body: Node2D) -> void:
