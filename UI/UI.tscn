@@ -37,7 +37,7 @@ scale = Vector2(0.4, 0.4)
 value = 100.0
 texture_progress = ExtResource("1_wv2lc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="HealthBarBackground" type="Sprite2D" parent="."]
 position = Vector2(650, 16)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_gvg3y")

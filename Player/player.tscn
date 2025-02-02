@@ -11,6 +11,7 @@ var speed: float = 1000.0
 
 var sprite_half_width: float = 26.5 # Can probably get width and height from sprite node item
 var sprite_half_height: float = 25
+
 @onready var screen_size := get_viewport_rect().size
 @onready var screen_min_bounds := Vector2(sprite_half_width, sprite_half_height)
 @onready var screen_max_bounds := Vector2(screen_size.x - sprite_half_width, screen_size.y - sprite_half_height)
@@ -61,8 +62,8 @@ size = Vector2(50, 108)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1000
-collision_layer = 7
-collision_mask = 7
+collision_layer = 19
+collision_mask = 3
 slide_on_ceiling = false
 script = SubResource("GDScript_ox1vd")
 

@@ -15,8 +15,8 @@
 
 [node name="Main" type="Node"]
 script = ExtResource("1_s0xsc")
-quarter_note_w_scene = ExtResource("4_accvy")
 quarter_note_q_scene = ExtResource("3_oagsc")
+quarter_note_w_scene = ExtResource("4_accvy")
 half_note_scene = ExtResource("5_vxutv")
 dotted_half_note_scene = ExtResource("6_6murc")
 whole_note_scene = ExtResource("7_xax3c")
@@ -38,8 +38,6 @@ position = Vector2(90, 625)
 [node name="GameplaySong" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_dxten")
 
-[node name="NoteTimer" type="Timer" parent="."]
-
 [node name="UI" parent="." instance=ExtResource("12_cvdgj")]
 
-[connection signal="timeout" from="NoteTimer" to="." method="_on_note_timer_timeout"]
+[connection signal="on_boss_hit" from="Boss" to="." method="_on_boss_on_boss_hit"]

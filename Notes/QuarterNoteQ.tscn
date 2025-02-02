@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgnn6ttgeuy4h"]
+[gd_scene load_steps=6 format=3 uid="uid://bgnn6ttgeuy4h"]
 
 [ext_resource type="Script" path="res://Notes/quarter_note_q.gd" id="1_1es28"]
 [ext_resource type="Texture2D" uid="uid://dppc5nohot5si" path="res://assets/QuarterNote/QuarterNoteQ.png" id="1_mf234"]
+[ext_resource type="PackedScene" uid="uid://b47o6dto2myt1" path="res://Notes/QuarterNoteQProjectile.tscn" id="2_31gnv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klpnk"]
 
@@ -10,6 +11,7 @@ size = Vector2(50, 81)
 
 [node name="QuarterNoteQ" type="Node2D"]
 script = ExtResource("1_1es28")
+quarter_note_q_projectile_scene = ExtResource("2_31gnv")
 
 [node name="PlatformArea" type="Area2D" parent="."]
 visible = false
