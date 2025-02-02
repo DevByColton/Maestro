@@ -4,7 +4,7 @@ extends Node2D
 
 signal whole_note_hit(projectile: PackedScene)
 
-var note_speed: float = 50.0
+var note_speed: float = 100.0
 var player_is_in_area: bool = false
 var is_in_projectile_mode: bool = false
 
