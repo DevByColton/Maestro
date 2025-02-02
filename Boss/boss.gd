@@ -15,9 +15,9 @@ var sprite_half_height: float = 330
 var time: float = 0.0
 var frequency: float = 0.5
 var amplitude: float = 0.3
-var speed: float = 50.0
+var speed: float = 45.0
 var lerp_speed: float = 5.0
-var boss_pushback_multiplier: float = 50
+var boss_pushback_multiplier: float = 55
 var next_boss_position: Vector2 = Vector2(1177, 365) # Starting position
 
 
