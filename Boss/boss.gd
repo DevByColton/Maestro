@@ -46,6 +46,11 @@ func do_boss_damage(damage_amount: int) -> void:
 	on_boss_hit.emit(damage_amount)
 
 
+func reset() -> void:
+	can_boss_move_horizontal = false
+	next_boss_position = Vector2(1177, 365)
+
+
 func _on_note_projectile_collider_body_entered(body: Node2D) -> void:
 	match body.name:
 		"QuarterNoteQProjectile":

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b47o6dto2myt1"]
 
-[ext_resource type="Script" path="res://Notes/quarter_note_q_projectile.gd" id="1_4tr44"]
+[ext_resource type="Script" uid="uid://bimltdk817e07" path="res://Notes/quarter_note_q_projectile.gd" id="1_4tr44"]
 [ext_resource type="Texture2D" uid="uid://dhextvdv3yq22" path="res://assets/QuarterNote/QuarterNoteProjectile.png" id="2_1jaqr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6r1q1"]

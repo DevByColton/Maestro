@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://tkq6is308f6d"]
 
-[ext_resource type="Script" path="res://Boss/boss.gd" id="1_wpirx"]
+[ext_resource type="Script" uid="uid://chn8dwltro61c" path="res://Boss/boss.gd" id="1_wpirx"]
 [ext_resource type="Texture2D" uid="uid://bkv55qowtsk4w" path="res://assets/Maestro/TheMaestro.png" id="2_hy0hg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2g57y"]

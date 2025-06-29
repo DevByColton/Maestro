@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cwn1ae1lv38rf"]
 
-[ext_resource type="Script" path="res://Notes/half_note.gd" id="1_14mn8"]
+[ext_resource type="Script" uid="uid://c6vgeyfmhhauc" path="res://Notes/half_note.gd" id="1_14mn8"]
 [ext_resource type="Texture2D" uid="uid://dk3057m74l226" path="res://assets/HalfNote/HalfNotePlatform.png" id="1_dqspl"]
 [ext_resource type="Texture2D" uid="uid://qggp053gsk5v" path="res://assets/HalfNote/HalfNote.png" id="1_hvrwk"]
 [ext_resource type="PackedScene" uid="uid://b643drvw445mc" path="res://Notes/HalfNoteProjectile.tscn" id="2_7wa62"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c10mkpcqnf82n"]
 
 [ext_resource type="Texture2D" uid="uid://vpuwor28fxx4" path="res://assets/WholeNote/WholeNotePlatform.png" id="1_j3v7t"]
-[ext_resource type="Script" path="res://Notes/whole_note.gd" id="1_k38hu"]
+[ext_resource type="Script" uid="uid://cvnuaime683h" path="res://Notes/whole_note.gd" id="1_k38hu"]
 [ext_resource type="Texture2D" uid="uid://braj7m1ewcpag" path="res://assets/WholeNote/WholeNoteHold.png" id="2_bnqn2"]
 [ext_resource type="PackedScene" uid="uid://dihab6p8tcfd8" path="res://Notes/WholeNoteProjectile.tscn" id="2_df00w"]
 [ext_resource type="Texture2D" uid="uid://clqiwefp6yh8r" path="res://assets/WholeNote/WholeNote.png" id="3_nuvbh"]

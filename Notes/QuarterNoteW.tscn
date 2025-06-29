@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dbbrtctl1i8jw"]
 
 [ext_resource type="Texture2D" uid="uid://datdjhxyphah3" path="res://assets/QuarterNote/QuarterNotePlatform.png" id="1_s0cam"]
-[ext_resource type="Script" path="res://Notes/quarter_note_w.gd" id="1_ubago"]
+[ext_resource type="Script" uid="uid://be3kvpkxmyq1r" path="res://Notes/quarter_note_w.gd" id="1_ubago"]
 [ext_resource type="PackedScene" uid="uid://ddy33721xdgfd" path="res://Notes/QuarterNoteWProjectile.tscn" id="2_h4t4q"]
 [ext_resource type="Texture2D" uid="uid://b1ttmxd7wwasv" path="res://assets/QuarterNote/QuarterNoteW.png" id="2_wwgaa"]
 

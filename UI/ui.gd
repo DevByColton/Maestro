@@ -9,3 +9,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$HealthAmount.text = str($TextureProgressBar.value) + " / " + str($TextureProgressBar.max_value)
+
+
+func reset() -> void:
+	$TextureProgressBar.value = 50

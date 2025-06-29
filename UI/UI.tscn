@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bvhktlt1mbpqx"]
 
-[ext_resource type="Script" path="res://UI/ui.gd" id="1_2p7ms"]
+[ext_resource type="Script" uid="uid://cibkqtffmqwtr" path="res://UI/ui.gd" id="1_2p7ms"]
 [ext_resource type="FontFile" uid="uid://crudqk8a8gnup" path="res://assets/Bokor-Regular.ttf" id="1_tiq2t"]
 [ext_resource type="Texture2D" uid="uid://dh21k41uqbk8j" path="res://assets/Maestro/MaestroHealthBar.png" id="1_wv2lc"]
 [ext_resource type="Texture2D" uid="uid://boljx4dik4ne" path="res://assets/Maestro/MaestroHealthBarBackground.png" id="4_gvg3y"]

@@ -6,11 +6,16 @@ extends Node
 @export var dotted_half_note_scene: PackedScene
 @export var whole_note_scene: PackedScene
 @export var note_spawns: Array[NoteSpawn] = []
+var note_timers: Array[Timer] = []
 
+signal start_game
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# Create the note array
+	_create_note_spawns()
+
+
+func _create_note_spawns() -> void:
 	note_spawns.append(NoteSpawn.new(1, NoteSpawn.NoteType.QuarterNoteQ, 0.1))
 	note_spawns.append(NoteSpawn.new(2, NoteSpawn.NoteType.QuarterNoteW, 1.5))
 	note_spawns.append(NoteSpawn.new(3, NoteSpawn.NoteType.QuarterNoteQ, 2.5))
@@ -93,11 +98,12 @@ func start_spawn_note_timers() -> void:
 	# Create note timers that will spawn the notes on timeout
 	# Each timer connects to the timeout signal and passes itself in order to queue_free
 	for note_spawn in note_spawns:
-		print("spawning note: ", note_spawn.id)
+		# print("spawning note: ", note_spawn.id)
 		match note_spawn.note_type:
 			NoteSpawn.NoteType.QuarterNoteQ:
 				var qnq_timer = Timer.new()
 				add_child(qnq_timer)
+				note_timers.push_back(qnq_timer)
 				qnq_timer.name = "qnq_timer" + str(note_spawn.id)
 				qnq_timer.one_shot = true
 				qnq_timer.start(note_spawn.seconds_until_spawn)
@@ -106,6 +112,7 @@ func start_spawn_note_timers() -> void:
 			NoteSpawn.NoteType.QuarterNoteW:
 				var qnw_timer = Timer.new()
 				add_child(qnw_timer)
+				note_timers.push_back(qnw_timer)
 				qnw_timer.name = "qnw_timer" + str(note_spawn.id)
 				qnw_timer.one_shot = true
 				qnw_timer.start(note_spawn.seconds_until_spawn)
@@ -114,6 +121,7 @@ func start_spawn_note_timers() -> void:
 			NoteSpawn.NoteType.HalfNote:
 				var hn_timer = Timer.new()
 				add_child(hn_timer)
+				note_timers.push_back(hn_timer)
 				hn_timer.name = "hn_timer" + str(note_spawn.id)
 				hn_timer.one_shot = true
 				hn_timer.start(note_spawn.seconds_until_spawn)
@@ -122,6 +130,7 @@ func start_spawn_note_timers() -> void:
 			NoteSpawn.NoteType.DottedHalfNote:
 				var dhn_timer = Timer.new()
 				add_child(dhn_timer)
+				note_timers.push_back(dhn_timer)
 				dhn_timer.name = "dhn_timer" + str(note_spawn.id)
 				dhn_timer.one_shot = true
 				dhn_timer.start(note_spawn.seconds_until_spawn)
@@ -130,6 +139,7 @@ func start_spawn_note_timers() -> void:
 			NoteSpawn.NoteType.WholeNote:
 				var wn_timer = Timer.new()
 				add_child(wn_timer)
+				note_timers.push_back(wn_timer)
 				wn_timer.name = "wn_timer" + str(note_spawn.id)
 				wn_timer.one_shot = true
 				wn_timer.start(note_spawn.seconds_until_spawn)
@@ -137,63 +147,65 @@ func start_spawn_note_timers() -> void:
 
 
 func on_quarter_note_q_timeout(timer: Timer) -> void:
-	print("Spawning new quarter note q")
+	# print("Spawning new quarter note q")
 	var qnq = quarter_note_q_scene.instantiate()
 	qnq.quarter_note_q_hit.connect(on_note_hit)
 	add_child(qnq)
 	timer.queue_free()
+	note_timers.remove_at(note_timers.find(timer))
 
 
 func on_quarter_note_w_timeout(timer: Timer) -> void:
-	print("Spawning new quarter note w")
+	# print("Spawning new quarter note w")
 	var qnw = quarter_note_w_scene.instantiate()
 	qnw.quarter_note_w_hit.connect(on_note_hit)
 	add_child(qnw)
 	timer.queue_free()
+	note_timers.remove_at(note_timers.find(timer))
 
 
 func on_half_note_timeout(timer: Timer) -> void:
-	print("spawning new half note")
+	# print("spawning new half note")
 	var hns = half_note_scene.instantiate()
 	hns.half_note_hit.connect(on_note_hit)
 	add_child(hns)
 	timer.queue_free()
+	note_timers.remove_at(note_timers.find(timer))
 
 
 func on_dotted_half_note_timeout(timer: Timer) -> void:
-	print("spawning new dotted half note")
+	# print("spawning new dotted half note")
 	var dhns = dotted_half_note_scene.instantiate()
 	dhns.dotted_half_note_hit.connect(on_note_hit)
 	add_child(dhns)
 	timer.queue_free()
+	note_timers.remove_at(note_timers.find(timer))
 
 
 func on_whole_note_timeout(timer: Timer) -> void:
-	print("spawning new whole note")
+	# print("spawning new whole note")
 	var wns = whole_note_scene.instantiate()
 	wns.whole_note_hit.connect(on_note_hit)
 	add_child(wns)
 	timer.queue_free()
+	note_timers.remove_at(note_timers.find(timer))
 
 
 func on_note_hit(projectile: Node) -> void:
-	print("spawing projectile: ", projectile.name)
+	# print("spawing projectile: ", projectile.name)
 	add_child(projectile)
 
 
 func _on_boss_on_boss_hit(damage_amount: int) -> void:
-	print("boss was hit for ", damage_amount, " damage")
+	# print("boss was hit for ", damage_amount, " damage")
 	var next_health = $UI/TextureProgressBar.value - damage_amount
 	
 	# Check if boss should still be alive
 	if next_health > 0:
 		$UI/TextureProgressBar.value = next_health
 	else:
-		$Boss.queue_free()
-		$Player.queue_free()
-		$UI.queue_free()
 		$YouWinLabel.show()
-		stop_or_play_song()
+		game_over()
 
 
 func _on_hide_gameplay_message_label_timeout() -> void:
@@ -210,11 +222,29 @@ func _on_hide_controls_label_timeout() -> void:
 	$Player.can_player_move = true
 
 
-func _on_boss_on_boss_hit_player() -> void:
-	# Game over
-	$Boss.queue_free()
-	$Player.queue_free()
-	$UI.queue_free()
-	$YouLoseLabel.show()
+func game_over() -> void:
+	note_spawns.clear()
 	stop_or_play_song()
+	$YouLoseLabel.show()
+	$Player.reset()
+	$Boss.reset()
+	$UI.reset()
 	
+	for timer in note_timers:
+		timer.queue_free()
+	note_timers.clear()
+	
+	await get_tree().create_timer(5.0).timeout
+	$YouLoseLabel.hide()
+	$YouWinLabel.hide()
+	$StartButton.show()
+
+
+func _on_boss_on_boss_hit_player() -> void:
+	game_over()
+
+
+func _on_start_button_pressed() -> void:
+	$StartButton.hide()
+	$GameplayLabel.show()
+	$HideGameplayMessageLabelTimer.start()

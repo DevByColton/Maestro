@@ -39,6 +39,12 @@ func _physics_process(delta: float) -> void:
 	position = position.clamp(screen_min_bounds, screen_max_bounds)
 
 
+func reset() -> void:
+	can_player_move = false
+	velocity = Vector2(0, 0)
+	position = Vector2(90.0, 625.0)
+
+
 func get_custom_gravity() -> float:
 	# When decending apply heavier gravity
 	if velocity.y > 0:
