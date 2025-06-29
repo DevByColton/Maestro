@@ -1,28 +1,33 @@
 [gd_scene load_steps=4 format=3 uid="uid://tkq6is308f6d"]
 
-[ext_resource type="Texture2D" uid="uid://bkv55qowtsk4w" path="res://assets/TheMaestro.png" id="1_wbaud"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_py662"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_wbaud")
-}],
-"loop": true,
-"name": &"boss",
-"speed": 5.0
-}]
+[ext_resource type="Script" path="res://Boss/boss.gd" id="1_wpirx"]
+[ext_resource type="Texture2D" uid="uid://bkv55qowtsk4w" path="res://assets/Maestro/TheMaestro.png" id="2_hy0hg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2g57y"]
-size = Vector2(178, 639)
+size = Vector2(176, 645)
 
-[node name="Boss" type="Area2D"]
+[node name="Boss" type="Node2D"]
+z_index = 2000
+script = ExtResource("1_wpirx")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="BossSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_py662")
-animation = &"boss"
+texture = ExtResource("2_hy0hg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -2.5)
+[node name="NoteProjectileCollider" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="HitBoxCollider" type="CollisionShape2D" parent="NoteProjectileCollider"]
+position = Vector2(-1, 2.5)
 shape = SubResource("RectangleShape2D_2g57y")
+
+[node name="PlayerCollider" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerCollider"]
+polygon = PackedVector2Array(2, -327, 61, -305, 45, -250, 41, -208, 59, -209, 82, -166, 76, 281, -77, 280, -88, -132, -59, -205, -30, -205, -29, -262)
+
+[connection signal="body_entered" from="NoteProjectileCollider" to="." method="_on_note_projectile_collider_body_entered"]
+[connection signal="body_entered" from="PlayerCollider" to="." method="_on_player_collider_body_entered"]

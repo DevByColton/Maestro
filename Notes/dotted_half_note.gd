@@ -1,20 +1,44 @@
-extends RigidBody2D
+extends Node2D
 
-@export var toward_player = false
-@export var toward_boss = false
+@export var dotted_note_projectile_scene: PackedScene
+
+signal dotted_half_note_hit(projectile: PackedScene)
+
+var note_speed: float = 115.0
+var player_is_in_area: bool = false
+var is_in_projectile_mode: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	self.position.x = 1347
-	self.position.y = 267 # Replace with function body. # Replace with function body.
+	self.position = Vector2(1380, 265)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if toward_player:
-		move_toward_player()
+	# Move the note along
+	self.position.x -= note_speed * delta
+	
+	if Input.is_action_just_pressed("r_hit_note") and player_is_in_area and !is_in_projectile_mode:
+		# Spawn a projectile at the current location, hide note to give the illusion it is launching
+		var projectile = dotted_note_projectile_scene.instantiate()
+		projectile.position = self.position
+		dotted_half_note_hit.emit(projectile)
+		$NoteArea.hide()
+		$QueueFreeTimer.start()
+		is_in_projectile_mode = true
+	
+	# Make sure the note is not beyond the left screen bounds with buffer, if it is free it
+	if position.x < -100:
+		queue_free()
 
-func move_toward_player():
-	self.position.x -= 1
 
-func move_toward_boss():
-	self.position.x += 1
+func _on_note_area_body_entered(body: Node2D) -> void:
+	player_is_in_area = true
+
+
+func _on_note_area_body_exited(body: Node2D) -> void:
+	player_is_in_area = false
+
+
+func _on_queue_free_timer_timeout() -> void:
+	queue_free()

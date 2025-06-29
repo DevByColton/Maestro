@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://c10mkpcqnf82n"]
+
+[ext_resource type="Texture2D" uid="uid://vpuwor28fxx4" path="res://assets/WholeNote/WholeNotePlatform.png" id="1_j3v7t"]
+[ext_resource type="Script" path="res://Notes/whole_note.gd" id="1_k38hu"]
+[ext_resource type="Texture2D" uid="uid://braj7m1ewcpag" path="res://assets/WholeNote/WholeNoteHold.png" id="2_bnqn2"]
+[ext_resource type="PackedScene" uid="uid://dihab6p8tcfd8" path="res://Notes/WholeNoteProjectile.tscn" id="2_df00w"]
+[ext_resource type="Texture2D" uid="uid://clqiwefp6yh8r" path="res://assets/WholeNote/WholeNote.png" id="3_nuvbh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lrphv"]
+size = Vector2(174, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p81rj"]
+size = Vector2(174, 45)
+
+[node name="WholeNote" type="Node2D"]
+script = ExtResource("1_k38hu")
+whole_note_projectile_scene = ExtResource("2_df00w")
+
+[node name="PlatformBody" type="CharacterBody2D" parent="."]
+
+[node name="PlatformSprite" type="Sprite2D" parent="PlatformBody"]
+position = Vector2(0, 25.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_j3v7t")
+
+[node name="PlatformCollider" type="CollisionShape2D" parent="PlatformBody"]
+position = Vector2(0, 29.5)
+shape = SubResource("RectangleShape2D_lrphv")
+debug_color = Color(0.898039, 0, 0.760784, 0.419608)
+
+[node name="NoteArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="NoteHoldSprite" type="Sprite2D" parent="NoteArea"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_bnqn2")
+
+[node name="NoteSprite" type="Sprite2D" parent="NoteArea"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_nuvbh")
+
+[node name="NoteCollider" type="CollisionShape2D" parent="NoteArea"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_p81rj")
+
+[node name="QueueFreeTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="NoteArea" to="." method="_on_note_area_body_entered"]
+[connection signal="body_exited" from="NoteArea" to="." method="_on_note_area_body_exited"]
+[connection signal="timeout" from="QueueFreeTimer" to="." method="_on_queue_free_timer_timeout"]

@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvhktlt1mbpqx"]
+
+[ext_resource type="Script" path="res://UI/ui.gd" id="1_2p7ms"]
+[ext_resource type="FontFile" uid="uid://crudqk8a8gnup" path="res://assets/Bokor-Regular.ttf" id="1_tiq2t"]
+[ext_resource type="Texture2D" uid="uid://dh21k41uqbk8j" path="res://assets/Maestro/MaestroHealthBar.png" id="1_wv2lc"]
+[ext_resource type="Texture2D" uid="uid://boljx4dik4ne" path="res://assets/Maestro/MaestroHealthBarBackground.png" id="4_gvg3y"]
+
+[node name="UI" type="Node"]
+script = ExtResource("1_2p7ms")
+
+[node name="Maestro" type="Label" parent="."]
+z_index = 4001
+offset_left = 571.0
+offset_top = -1.0
+offset_right = 659.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("1_tiq2t")
+theme_override_font_sizes/font_size = 20
+text = "The Maestro"
+
+[node name="HealthAmount" type="Label" parent="."]
+z_index = 4001
+offset_left = 672.0
+offset_top = -1.0
+offset_right = 712.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("1_tiq2t")
+theme_override_font_sizes/font_size = 20
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+z_index = 4000
+offset_left = 450.0
+offset_top = 3.0
+offset_right = 1450.0
+offset_bottom = 67.0
+scale = Vector2(0.4, 0.4)
+max_value = 50.0
+value = 50.0
+texture_progress = ExtResource("1_wv2lc")
+
+[node name="HealthBarBackground" type="Sprite2D" parent="."]
+position = Vector2(650, 16)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_gvg3y")

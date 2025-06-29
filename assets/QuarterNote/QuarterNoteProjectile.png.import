@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkv55qowtsk4w"
-path="res://.godot/imported/TheMaestro.png-7ce650f9c35d7de834c8a508b38abdd6.ctex"
+uid="uid://dhextvdv3yq22"
+path="res://.godot/imported/QuarterNoteProjectile.png-47a493da224034a61fe4197a4048e74d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/TheMaestro.png"
-dest_files=["res://.godot/imported/TheMaestro.png-7ce650f9c35d7de834c8a508b38abdd6.ctex"]
+source_file="res://assets/QuarterNote/QuarterNoteProjectile.png"
+dest_files=["res://.godot/imported/QuarterNoteProjectile.png-47a493da224034a61fe4197a4048e74d.ctex"]
 
 [params]
 
