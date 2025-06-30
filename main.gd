@@ -248,6 +248,7 @@ func _on_hide_controls_label_timeout() -> void:
 	$GameplaySong.play()
 	start_spawn_note_timers()
 	$RestartButton.show()
+	$StopButton.show()
 	$Boss.can_boss_move_horizontal = true
 	$Player.can_player_move = true
 
@@ -265,9 +266,17 @@ func _on_start_button_pressed() -> void:
 
 func _on_restart_button_pressed() -> void:
 	$RestartButton.hide()
+	$StopButton.hide()
 	$RestartingLabel.show()
 	reset_scenes()
 	await get_tree().create_timer(3.0).timeout
 	$RestartingLabel.hide()
 	$GameplayLabel.show()
 	$HideGameplayMessageLabelTimer.start()
+
+
+func _on_stop_button_pressed() -> void:
+	$RestartButton.hide()
+	$StopButton.hide()
+	reset_scenes()
+	$StartButton.show()
