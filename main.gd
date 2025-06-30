@@ -100,6 +100,7 @@ func game_over() -> void:
 
 func reset_scenes() -> void:
 	$RestartButton.hide()
+	$StopButton.hide()
 	stop_or_play_song()
 	$Player.reset()
 	$Boss.reset()
