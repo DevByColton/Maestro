@@ -6,7 +6,9 @@ extends Node
 @export var dotted_half_note_scene: PackedScene
 @export var whole_note_scene: PackedScene
 @export var note_spawns: Array[NoteSpawn] = []
+
 var note_timers: Array[Timer] = []
+var note_scenes: Array[Node2D] = []
 
 signal start_game
 
@@ -87,6 +89,33 @@ func _process(delta: float) -> void:
 	pass
 
 
+func game_over() -> void:
+	reset_scenes()
+	await get_tree().create_timer(3.0).timeout
+	$YouLoseLabel.hide()
+	$YouWinLabel.hide()
+	$RestartingLabel.hide()
+	$StartButton.show()
+
+
+func reset_scenes() -> void:
+	$RestartButton.hide()
+	stop_or_play_song()
+	$Player.reset()
+	$Boss.reset()
+	$UI.reset()
+	
+	for timer in note_timers:
+		if timer != null && !timer.is_queued_for_deletion():
+			timer.queue_free()
+	note_timers.clear()
+	
+	for note_scene in note_scenes:
+		if note_scene != null && !note_scene.is_queued_for_deletion():
+			note_scene.queue_free()
+	note_scenes.clear()
+
+
 func stop_or_play_song() -> void:
 	if $GameplaySong.playing:
 		$GameplaySong.stop()
@@ -149,46 +178,46 @@ func start_spawn_note_timers() -> void:
 func on_quarter_note_q_timeout(timer: Timer) -> void:
 	# print("Spawning new quarter note q")
 	var qnq = quarter_note_q_scene.instantiate()
+	note_scenes.push_back(qnq)
 	qnq.quarter_note_q_hit.connect(on_note_hit)
 	add_child(qnq)
 	timer.queue_free()
-	note_timers.remove_at(note_timers.find(timer))
 
 
 func on_quarter_note_w_timeout(timer: Timer) -> void:
 	# print("Spawning new quarter note w")
 	var qnw = quarter_note_w_scene.instantiate()
+	note_scenes.push_back(qnw)
 	qnw.quarter_note_w_hit.connect(on_note_hit)
 	add_child(qnw)
 	timer.queue_free()
-	note_timers.remove_at(note_timers.find(timer))
 
 
 func on_half_note_timeout(timer: Timer) -> void:
 	# print("spawning new half note")
 	var hns = half_note_scene.instantiate()
+	note_scenes.push_back(hns)
 	hns.half_note_hit.connect(on_note_hit)
 	add_child(hns)
 	timer.queue_free()
-	note_timers.remove_at(note_timers.find(timer))
 
 
 func on_dotted_half_note_timeout(timer: Timer) -> void:
 	# print("spawning new dotted half note")
 	var dhns = dotted_half_note_scene.instantiate()
+	note_scenes.push_back(dhns)
 	dhns.dotted_half_note_hit.connect(on_note_hit)
 	add_child(dhns)
 	timer.queue_free()
-	note_timers.remove_at(note_timers.find(timer))
 
 
 func on_whole_note_timeout(timer: Timer) -> void:
 	# print("spawning new whole note")
 	var wns = whole_note_scene.instantiate()
+	note_scenes.push_back(wns)
 	wns.whole_note_hit.connect(on_note_hit)
 	add_child(wns)
 	timer.queue_free()
-	note_timers.remove_at(note_timers.find(timer))
 
 
 func on_note_hit(projectile: Node) -> void:
@@ -218,33 +247,27 @@ func _on_hide_controls_label_timeout() -> void:
 	$ControlsLabel.hide()
 	$GameplaySong.play()
 	start_spawn_note_timers()
+	$RestartButton.show()
 	$Boss.can_boss_move_horizontal = true
 	$Player.can_player_move = true
 
 
-func game_over() -> void:
-	note_spawns.clear()
-	stop_or_play_song()
-	$YouLoseLabel.show()
-	$Player.reset()
-	$Boss.reset()
-	$UI.reset()
-	
-	for timer in note_timers:
-		timer.queue_free()
-	note_timers.clear()
-	
-	await get_tree().create_timer(5.0).timeout
-	$YouLoseLabel.hide()
-	$YouWinLabel.hide()
-	$StartButton.show()
-
-
 func _on_boss_on_boss_hit_player() -> void:
+	$YouLoseLabel.show()
 	game_over()
 
 
 func _on_start_button_pressed() -> void:
 	$StartButton.hide()
+	$GameplayLabel.show()
+	$HideGameplayMessageLabelTimer.start()
+
+
+func _on_restart_button_pressed() -> void:
+	$RestartButton.hide()
+	$RestartingLabel.show()
+	reset_scenes()
+	await get_tree().create_timer(3.0).timeout
+	$RestartingLabel.hide()
 	$GameplayLabel.show()
 	$HideGameplayMessageLabelTimer.start()
